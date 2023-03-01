@@ -7,11 +7,12 @@
 #Bekim Imrihor <bekim.imrihor@wago.com>
 #Nele Stocksmeyer <nele.stocksmeyer@wago.com>
 #Sascha Hahn <sascha.hahn@wago.com> 
-#Ansteuern der Ein- und Ausgaenge aus https://github.com/WAGO/cc100-howtos/blob/main/HowTo_Access_Onboard_IO/accessIO_CC100.py
+#Danny Meihoefer <danny.meihoefer@wago.com>
+#Write inputs an outputs with https://github.com/WAGO/cc100-howtos/blob/main/HowTo_Access_Onboard_IO/accessIO_CC100.py
 
 import time
 import logging
-#Funktionen zum Ansteuern und Auslesen der Ein- und Ausgaenge
+#Funktion to read an write the inputs and outputs
 def digitalWrite(value, output):
     """
     value: Value which the selected output should be set to
