@@ -19,7 +19,7 @@ DOUT_DATA = "/home/ea/dout/DOUT_DATA"
 OUT_VOLTAGE1_POWERDOWN = "/home/ea/anout/40017000.dac:dac@1/iio:device0/out_voltage1_powerdown"
 OUT_VOLTAGE2_POWERDOWN = "/home/ea/anout/40017000.dac:dac@2/iio:device1/out_voltage2_powerdown"
 OUT_VOLTAGE1_RAW = "/home/ea/anout/40017000.dac:dac@1/iio:device0/out_voltage1_raw"
-OUT_VOLTAGE2_RAW = "/home/ea/anout/40017000.dac:dac@1/iio:device1/out_voltage2_raw"
+OUT_VOLTAGE2_RAW = "/home/ea/anout/40017000.dac:dac@2/iio:device1/out_voltage2_raw"
 DIN = "/home/ea/din/din"
 IN_VOLTAGE3_RAW = "/home/ea/anin/48003000.adc:adc@100/iio:device3/in_voltage3_raw"
 IN_VOLTAGE0_RAW = "/home/ea/anin/48003000.adc:adc@100/iio:device3/in_voltage0_raw"
@@ -76,7 +76,7 @@ def digitalWrite(value, output):
     # Returns True after completion
     return True
 
-
+"""
 def analogWrite(voltage, output):
     """
     voltage: Voltage which the selected output should be set to
@@ -118,7 +118,42 @@ def analogWrite(voltage, output):
         
     # Returns True after completion
     return True
+"""
+    
+def analogWrite(iSpannung: int, iAusgang: int):
+    """
+    iSpannung: Spannung welche am analogen Ausgang geschaltet werden soll
+    iAusgang: Ausgang, welcher geschaltet werden soll
 
+    Funktion schaltet den analogen Ausgang auf die angegebenen Spannung
+    """
+    iSpannung = Cal.calibrateOut(iSpannung, iAusgang)
+    if iSpannung < 0:
+        iSpannung = 0
+    #Aktiviert die analogen Ausgänge am CC100 durch schreiben 
+    AO1_POWER_FILE="/home/ea/anout/40017000.dac:dac@1/iio:device0/out_voltage1_powerdown"
+    f=open(AO1_POWER_FILE, "w")
+    f.write("0")
+    f.close()
+    AO2_POWER_FILE="/home/ea/anout/40017000.dac:dac@2/iio:device1/out_voltage2_powerdown"
+    datei=open(AO2_POWER_FILE, "w")
+    datei.write("0")
+    datei.close()
+    #Schreibt den aus der Kalibrierung für den passenden Ausgang entnommenen Wert für die Spannung in die Datei für den Ausgang
+    #Beim ausschalten wird eine Null in die Datei geschrieben
+    #Kalibrierung mit calibration.py
+    if iAusgang == 1:
+        AO1_VOLTAGE_FILE="/home/ea/anout/40017000.dac:dac@1/iio:device0/out_voltage1_raw"
+        datei=open(AO1_VOLTAGE_FILE, "w")
+        #Änderung für die Spannung von Ausgang 1 in der folgenden Zeile
+        datei.write(str(iSpannung))
+        datei.close()
+    if iAusgang == 2:
+        AO1_VOLTAGE_FILE="/home/ea/anout/40017000.dac:dac@2/iio:device1/out_voltage2_raw"
+        datei=open(AO1_VOLTAGE_FILE, "w")
+        #Änderung für die Spannung von Ausgang 1 in der folgenden Zeile
+        datei.write(str(iSpannung))
+        datei.close()
 def digitalRead(input):
     """
     input: Digital input to be switched
