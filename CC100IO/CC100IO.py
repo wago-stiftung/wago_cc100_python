@@ -92,12 +92,12 @@ def analogWrite(voltage, output):
 
         # Activates the analog outputs on the CC100
     path = "/home/ea/anout/40017000.dac:dac@1/iio:device0/out_voltage1_powerdown"
-    file = open(OUT_VOLTAGE1_POWERDOWN, "w")
+    file = open(path, "w")
     file.write("0")
     file.close()
 
     path = "/home/ea/anout/40017000.dac:dac@2/iio:device1/out_voltage2_powerdown"
-    file = open(OUT_VOLTAGE2_POWERDOWN, "w")
+    file = open(path, "w")
     file.write("0")
     file.close()
 
@@ -106,13 +106,13 @@ def analogWrite(voltage, output):
     # When turning off, zero is written to the file
     if output == 1:
         path="/home/ea/anout/40017000.dac:dac@1/iio:device0/out_voltage1_raw"
-        file = open(OUT_VOLTAGE1_RAW, "w")
+        file = open(path, "w")
         file.write(str(voltage))
         file.close()
 
     elif output == 2:
         path="/home/ea/anout/40017000.dac:dac@2/iio:device1/out_voltage2_raw"
-        file=open(OUT_VOLTAGE2_RAW, "w")
+        file=open(path, "w")
         file.write(str(voltage))
         file.close()
         
