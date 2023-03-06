@@ -28,7 +28,7 @@ pip install CC100IO
   * Function returns True if value is written, returns False if an error occured. 
 * #### ```analogWrite (voltage, output)``` : 
   * voltage: Voltage which the selected output should be set to (0 - 10000 mV)
-  * output: Analog output to be switched(1-2)
+  * output: Analog output to be switched(1 or 2)
   * Function switches the output to the specified voltage. 
   * Function does not check the current value of the output. 
   * Function returns True if value is written, returns False if an error occured. 
@@ -43,7 +43,7 @@ pip install CC100IO
   * Reads the specified input until the desired state is reached, by another Function or external factors and then returns True.
   * Function runs until the state is reached.
 * #### ```analogRead (input)``` :
-  * input: Analog input to be read (1-2)
+  * input: Analog input to be read (1 or 2)
   * Function reads the input and returns the calibrated value in mV as an Integer.
 * #### ```delay (iTime)``` :
   * Function makes the programm in a period of time late or slow. (in ms)
