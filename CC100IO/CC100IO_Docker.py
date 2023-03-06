@@ -38,7 +38,6 @@ def digitalWrite(value, output):
     Function returns True if value is written, returns False if an error occured
     """
     # Reading the outputs current state to calculate the new value in the file
-    path ="/home/ea/dout/DOUT_DATA"
     file = open(DOUT_DATA, "r")
     currentValue = int(file.read())
     file.close()
@@ -91,12 +90,10 @@ def analogWrite(voltage, output):
         voltage = 0
 
         # Activates the analog outputs on the CC100
-    path = "/home/ea/anout/40017000.dac:dac@1/iio:device0/out_voltage1_powerdown"
     file = open(OUT_VOLTAGE1_POWERDOWN, "w")
     file.write("0")
     file.close()
 
-    path = "/home/ea/anout/40017000.dac:dac@2/iio:device1/out_voltage2_powerdown"
     file = open(OUT_VOLTAGE2_POWERDOWN, "w")
     file.write("0")
     file.close()
@@ -105,13 +102,11 @@ def analogWrite(voltage, output):
     # for the voltage to the file for the output
     # When turning off, zero is written to the file
     if output == 1:
-        path="/home/ea/anout/40017000.dac:dac@1/iio:device0/out_voltage1_raw"
         file = open(OUT_VOLTAGE1_RAW, "w")
         file.write(str(voltage))
         file.close()
 
     elif output == 2:
-        path="/home/ea/anout/40017000.dac:dac@2/iio:device1/out_voltage2_raw"
         file=open(OUT_VOLTAGE2_RAW, "w")
         file.write(str(voltage))
         file.close()
@@ -128,7 +123,6 @@ def digitalRead(input):
     """
 
     # Reads the state of the digital inputs on the CC100
-    path = "/home/ea/din/din"
     datei = open (DIN, "r")
     value = datei.readline()
     datei.close()
