@@ -20,7 +20,7 @@ pip install CC100IO
 
 ## Description of functions
 
-* ___digitalWrite (value, output) :___ 
+* ### ```digitalWrite (value, output)``` :
   * value: Value which the selected output should be set to
   * output: Digital output to be switched
   * Function switches the output to the specified value.
