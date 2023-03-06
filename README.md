@@ -55,7 +55,7 @@ pip install CC100IO
 - ___getCalibrationData (value) :___
   *  Returns the calibrationdata for the required row of the table.
 - ___calcCalibrate (val_uncal, calib):___
-  * Calcutes the value of the voltage for the required output.
+  * Calculates the value of the voltage for the required output.
 - ___calibrateOut (iVoltage, iOutput) :___
   *  Returns the value which is to be written with the specified voltage.
 
