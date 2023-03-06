@@ -215,7 +215,7 @@ def getCalibrationData(value):
 
 def calcCalibrate(val_uncal, calib):
     """
-    Calcutes the value of the voltage for the required output
+    Calculates the value of the voltage for the required output
     """
     x1=int(calib[0])
     y1=int(calib[1])
