@@ -75,33 +75,33 @@ def analogWrite(voltage, output):
         voltage = 0
 
         # Activates the analog outputs on the CC100
-        path = "/home/ea/anout/40017000.dac:dac@1/iio:device0/out_voltage1_powerdown"
+    path = "/home/ea/anout/40017000.dac:dac@1/iio:device0/out_voltage1_powerdown"
+    file = open(path, "w")
+    file.write("0")
+    file.close()
+
+    path = "/home/ea/anout/40017000.dac:dac@2/iio:device1/out_voltage2_powerdown"
+    file = open(path, "w")
+    file.write("0")
+    file.close()
+
+    # Writes the voltage, taken from the calibration for the corresponding output,
+    # for the voltage to the file for the output
+    # When turning off, zero is written to the file
+    if output == 1:
+        path="/home/ea/anout/40017000.dac:dac@1/iio:device0/out_voltage1_raw"
         file = open(path, "w")
-        file.write("0")
+        file.write(str(voltage))
         file.close()
 
-        path = "/home/ea/anout/40017000.dac:dac@2/iio:device1/out_voltage2_powerdown"
-        file = open(path, "w")
-        file.write("0")
+    elif output == 2:
+        path="/home/ea/anout/40017000.dac:dac@2/iio:device1/out_voltage2_raw"
+        file=open(path, "w")
+        file.write(str(voltage))
         file.close()
-
-        # Writes the voltage, taken from the calibration for the corresponding output,
-        # for the voltage to the file for the output
-        # When turning off, zero is written to the file
-        if output == 1:
-            path="/home/ea/anout/40017000.dac:dac@1/iio:device0/out_voltage1_raw"
-            file = open(path, "w")
-            file.write(str(voltage))
-            file.close()
-
-        elif output == 2:
-            path="/home/ea/anout/40017000.dac:dac@2/iio:device1/out_voltage2_raw"
-            file=open(path, "w")
-            file.write(str(voltage))
-            file.close()
-            
-        # Returns True after completion
-        return True
+        
+    # Returns True after completion
+    return True
 
 def digitalRead(input):
     """
