@@ -12,7 +12,7 @@
 
 import time
 import logging
-#Funktion to read an write the inputs and outputs
+#Function to read an write the inputs and outputs
 def digitalWrite(value, output):
     """
     value: Value which the selected output should be set to
