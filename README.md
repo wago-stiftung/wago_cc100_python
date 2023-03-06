@@ -50,6 +50,9 @@ pip install CC100IO
 * #### ```tempRead (input)``` :
   *  input: PT input to be switched
   *  Function reads the input and returns the calibrated value in °C as an Integer.
+
+## ?
+
 * #### ```readCalibrationData ()``` :
   *  Reads out the data of the calibrationdata from the CC100.
 * #### ```getCalibrationData (value)``` :
