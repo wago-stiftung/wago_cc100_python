@@ -112,7 +112,7 @@ def analogWrite(voltage, output):
 
     elif output == 2:
         path="/home/ea/anout/40017000.dac:dac@2/iio:device1/out_voltage2_raw"
-        file=open(OUT_VOLTAGE2_RAW, "w")
+        file=open(path, "w")
         file.write(str(voltage))
         file.close()
         
