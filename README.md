@@ -18,6 +18,17 @@ Basic python module to control the input and output ports of a WAGO CC100.
 pip install CC100IO 
 ```
 
+## Example
+```python
+import CC100IO
+def armHoch():
+
+    CC100IO.digitalWrite(True, 3)
+    if CC100IO.digitalReadWait(4, False):
+        CC100IO.digitalWrite(False, 3)
+        return True
+```
+
 ## Description of functions
 
 * #### ```digitalWrite (value, output)``` :
