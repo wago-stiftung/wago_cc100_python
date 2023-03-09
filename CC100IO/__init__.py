@@ -1,1 +1,1 @@
-from CC100IO.CC100IO_Docker import digitalWrite, analogWrite, digitalRead, digitalReadWait, analogRead, delay, tempRead
+from CC100IO.CC100IO import digitalWrite, analogWrite, digitalRead, digitalReadWait, analogRead, delay, tempRead
