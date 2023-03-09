@@ -14,19 +14,32 @@ import time
 import logging
 
 
-#data paths
-DOUT_DATA = "/home/ea/dout/DOUT_DATA"
-OUT_VOLTAGE1_POWERDOWN = "/home/ea/anout/40017000.dac:dac@1/iio:device0/out_voltage1_powerdown"
-OUT_VOLTAGE2_POWERDOWN = "/home/ea/anout/40017000.dac:dac@2/iio:device1/out_voltage2_powerdown"
-OUT_VOLTAGE1_RAW = "/home/ea/anout/40017000.dac:dac@1/iio:device0/out_voltage1_raw"
-OUT_VOLTAGE2_RAW = "/home/ea/anout/40017000.dac:dac@2/iio:device1/out_voltage2_raw"
-DIN = "/home/ea/din/din"
-IN_VOLTAGE3_RAW = "/home/ea/anin/48003000.adc:adc@100/iio:device3/in_voltage3_raw"
-IN_VOLTAGE0_RAW = "/home/ea/anin/48003000.adc:adc@100/iio:device3/in_voltage0_raw"
+#data paths on CC100
+DOUT_DATA = "/sys/kernel/dout_drv/DOUT_DATA"
+OUT_VOLTAGE1_POWERDOWN = "/sys/bus/iio/devices/iio:device0/out_voltage1_powerdown"
+OUT_VOLTAGE2_POWERDOWN = "/sys/bus/iio/devices/iio:device1/out_voltage2_powerdown"
+OUT_VOLTAGE1_RAW = "/sys/bus/iio/devices/iio:device0/out_voltage1_raw"
+OUT_VOLTAGE2_RAW = "/sys/bus/iio/devices/iio:device1/out_voltage2_raw"
+DIN = "/sys/devices/platform/soc/44009000.spi/spi_master/spi0/spi0.0/din"
+IN_VOLTAGE3_RAW = "/sys/bus/iio/devices/iio:device3/in_voltage3_raw"
+IN_VOLTAGE0_RAW = "/sys/bus/iio/devices/iio:device3/in_voltage0_raw"
 IN_VOLTAGE13_RAW = "/sys/bus/iio/devices/iio:device2/in_voltage13_raw"
 IN_VOLTAGE1_RAW = "/sys/bus/iio/devices/iio:device2/in_voltage1_raw"
-CALIB_DATA = "/home/ea/cal/calib"
-
+CALIB_DATA = "/etc/calib"
+if osIsDocker():
+    #data paths on the Docker-Container
+    DOUT_DATA = "/home/ea/dout/DOUT_DATA"
+    OUT_VOLTAGE1_POWERDOWN = "/home/ea/anout/40017000.dac:dac@1/iio:device0/out_voltage1_powerdown"
+    OUT_VOLTAGE2_POWERDOWN = "/home/ea/anout/40017000.dac:dac@2/iio:device1/out_voltage2_powerdown"
+    OUT_VOLTAGE1_RAW = "/home/ea/anout/40017000.dac:dac@1/iio:device0/out_voltage1_raw"
+    OUT_VOLTAGE2_RAW = "/home/ea/anout/40017000.dac:dac@2/iio:device1/out_voltage2_raw"
+    DIN = "/home/ea/din/din"
+    IN_VOLTAGE3_RAW = "/home/ea/anin/48003000.adc:adc@100/iio:device3/in_voltage3_raw"
+    IN_VOLTAGE0_RAW = "/home/ea/anin/48003000.adc:adc@100/iio:device3/in_voltage0_raw"
+    IN_VOLTAGE13_RAW = "/sys/bus/iio/devices/iio:device2/in_voltage13_raw"
+    IN_VOLTAGE1_RAW = "/sys/bus/iio/devices/iio:device2/in_voltage1_raw"
+    CALIB_DATA = "/home/ea/cal/calib"
+    OS_VERSION = "/etc/os-release"
 
 #Function to read an write the inputs and outputs
 def digitalWrite(value, output):
@@ -116,7 +129,7 @@ def analogWrite(voltage, output):
 
 def digitalRead(input):
     """
-    input: Digital input to be switched
+    input: Digital input to be read
     Function reads the input
     Function does not check the current value of the output
     Returns True or False depending on the value
@@ -280,3 +293,15 @@ def calibrateTemp(iValue, iInput):
         cal_Temp = getCalibrationData(1)
     #Returns the calculated value in °C
     return (calcCalibrate(iValue, cal_Temp)-1000)/(3.91)
+
+def osIsDocker():
+    '''Returns True if the method is run by CC100Interface-Docker'''
+    os_data = open(OS_VERSION, "r")
+    lines = os_data.readlines()
+    for line in lines:
+        if line.strip('\n') == 'NAME="Ubuntu"':
+            os_data.close()
+            return True
+    os_data.close()        
+    return False
+    
