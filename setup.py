@@ -1,3 +1,5 @@
+#Author Bjarne Zaremba <bjarne.zaremba@wago.com>
+
 from distutils.core import setup
 setup(
   name = 'CC100IO',         
