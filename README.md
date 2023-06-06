@@ -80,24 +80,31 @@ python3
 
 ### Python-Bibliothek zum Ansteuern der Ein- und Ausgänge installieren
 1. Dieses Repository herunterladen
-2. In das Verzeichnes des Repositories wechseln und Kommandozeile öffnen
+2. In das Verzeichnes des heruntergeladenen Repositories wechseln und Kommandozeile öffnen
 ```bash
 scp -pr ./CC100IO root@192.168.1.17:/home/python_scripts
 ```
 
-Die Pythonsscripts können nun im Verzeichnis python_scripts erstellt werden. Es muss lediglich das
+Die Pythonsscripts können nun im Verzeichnis /home/python_scripts erstellt werden. Es muss lediglich das
 CC100IO Modul in den Pythonscripts importiert werden.
+Zum Ausführen der Scripts in das Verzeichnis /home/python_scripts wechseln und das gewünschte Script mit Python 3 ausführen.
+```bash
+cd /home/python_scripts
+pyhon3 <script_name.py>
+```
 
 
 ## Example
 ```python
+#  toggle digital outputs
 import CC100IO
-def armHoch():
 
-    CC100IO.digitalWrite(True, 3)
-    if CC100IO.digitalReadWait(4, False):
-        CC100IO.digitalWrite(False, 3)
-        return True
+state = True
+while True:
+    for output in range(1,5):
+        CC100IO.digitalWrite(state, output)
+        CC100IO.delay(100)
+    state = not state
 ```
 
 ## Description of functions
