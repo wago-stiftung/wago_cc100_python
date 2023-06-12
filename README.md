@@ -18,7 +18,7 @@ Basic python module to control the input and output ports of a WAGO CC100. Modul
 
 ### 1. Überblick CC100
 
-<img src="assets/CC100.PNG" width="400">
+<img src="assets/CC100.PNG" width="800">
 
 
 ### 2. feste IP auf USB-Ethernet-Adapter konfigurieren
