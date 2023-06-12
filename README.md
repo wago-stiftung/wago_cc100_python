@@ -53,11 +53,11 @@ Es befindet sich bereits eine Python Installation auf dem Gerät (Version 2.7). 
 - Configuration --> Software Uploads
 - zuvor heruntergeladene IPK auswählen und installieren
 
-## Nutzung von Python auf dem CC100
-Um Pythoncode auf dem CC100 schreiben und ausführen zu können, muss der Zugriff mit dem Linux Betriebssystem auf dem Gerät
+## 2. Nutzung von Python auf dem CC100
+Um Pythoncode auf dem CC100 schreiben und ausführen zu können, muss der Zugriff auf das Linux Betriebssystem auf dem Gerät
 hergestellt werden können. Dafür bietet sich eine Verbindung über SSH an. SSH stellt eine verschlüsselte Verbindung in Form
-eines Terminals zur Verfügung. Der CC100 unterstützt dies standardmäßig. Mac- und Linux-PC unterstützen i.d.R. ebenfalls bereits SSH.
-Unter Windows muss zunächst ein SSH-Client installiert werden.
+eines Terminals zur Verfügung. Der CC100 unterstützt dies standardmäßig. Mac- und Linux-PCs unterstützen i.d.R. ebenfalls bereits SSH.
+Auf Windows-Geräten muss zunächst ein SSH-Client installiert werden.
 
 ### SSH-Client auf Windows-PC installieren
 1. Apps und Features öffnen --> Feature hinzufügen
@@ -72,7 +72,7 @@ ssh root@192.168.1.17
 python3
 ```
 
-### Visual Studio Code konfigurieren
+### Visual Studio Code auf dem PC installieren und konfigurieren
 1. https://code.visualstudio.com/download
 2. Python Extension installieren (ms-python.python)
 3. SSH Client Extension installieren, z.B. thangnc.ssh-client
@@ -85,8 +85,8 @@ python3
 scp -pr ./CC100IO root@192.168.1.17:/home/python_scripts
 ```
 
-Die Pythonsscripts können nun im Verzeichnis /home/python_scripts erstellt werden. Es muss lediglich das
-CC100IO Modul in den Pythonscripts importiert werden.
+Nun können Pythonsscripts im Verzeichnis /home/python_scripts erstellt werden. Es muss lediglich das
+CC100IO Modul im Pythonscript importiert werden.
 Zum Ausführen der Scripts in das Verzeichnis /home/python_scripts wechseln und das gewünschte Script mit Python 3 ausführen.
 ```bash
 cd /home/python_scripts
