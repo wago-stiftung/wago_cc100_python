@@ -15,19 +15,25 @@ Basic python module to control the input and output ports of a WAGO CC100. Modul
 
 
 ## 1. CC100 vorbereiten
-### 1. feste IP auf USB-Ethernet-Adapter konfigurieren
+
+### 1. Überblick CC100
+
+<img src="assets/CC100.png" width="400">
+
+
+### 2. feste IP auf USB-Ethernet-Adapter konfigurieren
 1. Windowseinstellungen öffnen --> Netzwerk und Internet --> Adaptereinstellungen ändern
 2. Rechtsklick auf USB-Adapter --> Eigenschaften
 3. Doppelklick auf "internetprotokoll, Version 4"
 4. IP-Adresse: 192.168.1.xx (z.B. 192.168.1.10)
 5. Subnetzmaske: 255.255.255.0
 
-### 2. temporäre IP auf CC100 konfigurieren
+### 3. temporäre IP auf CC100 konfigurieren
 1. Betriebsartenschalter in STOP-Position
 2. Reset-Taster (RST) länger als 8 Sekunden drücken
 Die Ausführung wird durch eine orange blinkende „SYS“-LEDs signalisiert. Hiermit wurde dem CC100 die temporäre IP 192.168.1.17 zugewiesen.
 
-### 3. CC100 konfigurieren
+### 4. CC100 konfigurieren
 1. Ethernetkabel an Steckplatz X1 des CC100
 2. IP-Adresse des CC100 in Adressleiste des Webbrowser eingeben um auf das WBM zu gelangen
 3. Anmeldedaten des CC100
