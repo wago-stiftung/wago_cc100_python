@@ -17,7 +17,10 @@ Basic python module to control the input and output ports of a WAGO CC100. Modul
 ## 1. Compact Controller 100 vorbereiten
 
 ### 1. Überblick CC100
+Der Compact Controller ist die neue Kompaktsteuerung von WAGO mit integrierten I/Os für kleinere Automatisierungslösungen.
+
 <img src="assets/CC100.PNG" width="800">
+
 - 8DI 4DO (24V)
 - 2AI 2AO (0-10V)
 - 2NI1K/PT1K
@@ -29,6 +32,8 @@ Basic python module to control the input and output ports of a WAGO CC100. Modul
 - Programmiersprachen gemäß IEC 61131-3 (CoDeSys V3.5)
 - RAM: 512 MB
 - Flash: 4096 MB
+
+Docker und Node-Red auf dem CC100 - https://www.youtube.com/@helmutsaal3215/videos
 
 ### 2. feste IP auf USB-Ethernet-Adapter konfigurieren
 1. Windowseinstellungen öffnen --> Netzwerk und Internet --> Adaptereinstellungen ändern
