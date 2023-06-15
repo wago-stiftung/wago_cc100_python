@@ -2,7 +2,7 @@
 
 Basic python module to control the input and output ports of a WAGO CC100. Module can be used native on device or in Docker Container
 
-## Contributors
+## Mitwirkende
 - Konrad Holsmoelle <konrad.holsmoelle@wago.com>
 - Bjarne Zaremba <bjarne.zaremba@wago.com>
 - Tobias Pape <tobias.pape@wago.com>
@@ -14,9 +14,7 @@ Basic python module to control the input and output ports of a WAGO CC100. Modul
 - Danny Meihoefer <danny.meihoefer@wago.com>
 
 
-## 1. Compact Controller 100 vorbereiten
-
-### 1. Überblick CC100
+## 1. Überblick CC100
 Der Compact Controller ist die neue Kompaktsteuerung von WAGO mit integrierten I/Os für kleinere Automatisierungslösungen.
 
 <img src="assets/CC100.PNG" width="800">
@@ -35,26 +33,32 @@ Der Compact Controller ist die neue Kompaktsteuerung von WAGO mit integrierten I
 
 Docker und Node-Red auf dem CC100 - https://www.youtube.com/@helmutsaal3215/videos
 
-### 2. feste IP auf USB-Ethernet-Adapter konfigurieren
+
+## 1. Compact Controller 100 vorbereiten
+Auf dem CC100 muss die Firmware Version 21(03.09.04) oder höher installiert sein.
+
+### Feste IP auf USB-Ethernet-Adapter konfigurieren
 1. Windowseinstellungen öffnen --> Netzwerk und Internet --> Adaptereinstellungen ändern
 2. Rechtsklick auf USB-Adapter --> Eigenschaften
 3. Doppelklick auf "internetprotokoll, Version 4"
 4. IP-Adresse: 192.168.1.xx (z.B. 192.168.1.10)
 5. Subnetzmaske: 255.255.255.0
 
-### 3. temporäre IP auf CC100 konfigurieren
+### Temporäre IP auf CC100 konfigurieren
 1. Betriebsartenschalter in STOP-Position
 2. Reset-Taster (RST) länger als 8 Sekunden drücken
 Die Ausführung wird durch eine orange blinkende „SYS“-LEDs signalisiert. Hiermit wurde dem CC100 die temporäre IP 192.168.1.17 zugewiesen.
 
-### 4. CC100 konfigurieren
+### CC100 konfigurieren
 1. Ethernetkabel an Steckplatz X1 des CC100
 2. IP-Adresse des CC100 in Adressleiste des Webbrowser eingeben um auf das WBM zu gelangen
 3. Anmeldedaten des CC100
 - Benutzer: admin
 - Kennwort: wago
 4. Wenn Anfrage für Kennwortänderung angezeigt wird abbrechen
-5. auf Startseite prüfen, ob Firmware Revision 21 oder größer ist
+5. auf Startseite prüfen, ob Firmware Revision 21(03.09.04) oder größer ist
+- FW herunterladen (https://downloadcenter.wago.com/software/details/lftcm58nickznwfatc)
+- FW mit WagoUpload auf dem CC100 installieren (https://downloadcenter.wago.com/software/details/lhg5pfs6pnw13wzlpt)
 6. feste IP Adresse einstellen
 - Configuration --> Networking
 - IP Source: Static IP
@@ -107,13 +111,17 @@ scp -pr ./CC100IO root@192.168.1.17:/home/python_scripts
 
 Nun können Pythonsscripts im Verzeichnis /home/python_scripts erstellt werden. Es muss lediglich das
 CC100IO Modul im Pythonscript importiert werden.
+```python
+import CC100IO
+# Python Code
+```
 Zum Ausführen der Scripts in das Verzeichnis /home/python_scripts wechseln und das gewünschte Script mit Python 3 ausführen.
 ```bash
 cd /home/python_scripts
 pyhon3 <script_name.py>
 ```
 
-## Description of functions
+## Funktionen
 
 * #### ```digitalWrite (value, output)``` :
   * value: Value which the selected output should be set to (True or False)
@@ -146,30 +154,7 @@ pyhon3 <script_name.py>
   *  input: PT input to be switched ("PT1" or "PT2")
   *  Function reads the input and returns the calibrated value in °C as an Integer.
 
-## Examples
-
-```python
-#  toggle digital outputs
-import CC100IO
-
-state = True
-while True:
-    for output in range(1,5):
-        CC100IO.digitalWrite(state, output)
-        CC100IO.delay(100)
-    state = not state
-```
-
-```python
-#  read digital outputs
-import CC100IO
-
-while True:
-    for input in range(1,9):
-        input_value = CC100IO.digitalRead(input)
-        print(f"Input_{input}: {input_value}")
-    print("\n")
-    CC100IO.delay(500)
-```
+## Beispiele
+Befinden sich im Ordner *examples*
 
 
