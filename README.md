@@ -1,6 +1,6 @@
 # CC100IO
 
-Basic python module to control the input and output ports of a WAGO CC100. Module can be used native on device or in Docker Container
+Python Modul um zum Ansteuern der Ein- und Ausgänge des WAGO Compact Controller 100. Kann nativ auf dem Gerät oder in einem Dockercontainer genutzt werden.
 
 ## Mitwirkende
 - Konrad Holsmoelle <konrad.holsmoelle@wago.com>
@@ -14,7 +14,7 @@ Basic python module to control the input and output ports of a WAGO CC100. Modul
 - Danny Meihoefer <danny.meihoefer@wago.com>
 
 
-## 1. Überblick CC100
+## 1. Überblick Compact Controller 100
 Der Compact Controller ist die neue Kompaktsteuerung von WAGO mit integrierten I/Os für kleinere Automatisierungslösungen.
 
 <img src="assets/CC100.PNG" width="800">
@@ -34,7 +34,7 @@ Der Compact Controller ist die neue Kompaktsteuerung von WAGO mit integrierten I
 Docker und Node-Red auf dem CC100 - https://www.youtube.com/@helmutsaal3215/videos
 
 
-## 1. Compact Controller 100 vorbereiten
+## 1. CC100 vorbereiten
 Auf dem CC100 muss die Firmware Version 21(03.09.04) oder höher installiert sein.
 
 ### Feste IP auf USB-Ethernet-Adapter konfigurieren
@@ -106,7 +106,7 @@ python3
 1. Dieses Repository herunterladen
 2. In das Verzeichnes des heruntergeladenen Repositories wechseln und Kommandozeile öffnen
 ```bash
-scp -pr ./CC100IO root@192.168.1.17:/home/python_scripts
+scp -pr ./python_scripts root@192.168.1.17:/home/
 ```
 
 Nun können Pythonsscripts im Verzeichnis /home/python_scripts erstellt werden. Es muss lediglich das
