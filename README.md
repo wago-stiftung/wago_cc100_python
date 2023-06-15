@@ -155,6 +155,6 @@ pyhon3 <script_name.py>
   *  Function reads the input and returns the calibrated value in °C as an Integer.
 
 ## Beispiele
-Befinden sich im Ordner *examples*
+Befinden sich im Ordner *python_scripts*
 
 
