@@ -53,20 +53,20 @@ Die Ausführung wird durch eine orange blinkende „SYS“-LEDs signalisiert. Hi
 1. Ethernetkabel an Steckplatz X1 des CC100
 2. IP-Adresse des CC100 in Adressleiste des Webbrowser eingeben um auf das WBM zu gelangen
 3. Anmeldedaten des CC100
-- Benutzer: admin
-- Kennwort: wago
+    - Benutzer: admin
+    - Kennwort: wago
 4. Wenn Anfrage für Kennwortänderung angezeigt wird abbrechen
 5. auf Startseite prüfen, ob Firmware Revision 21(03.09.04) oder größer ist
-- FW herunterladen (https://downloadcenter.wago.com/software/details/lftcm58nickznwfatc)
-- FW mit WagoUpload auf dem CC100 installieren (https://downloadcenter.wago.com/software/details/lhg5pfs6pnw13wzlpt)
+    - FW herunterladen (https://downloadcenter.wago.com/software/details/lftcm58nickznwfatc)
+    - FW mit WagoUpload auf dem CC100 installieren (https://downloadcenter.wago.com/software/details/lhg5pfs6pnw13wzlpt)
 6. feste IP Adresse einstellen
-- Configuration --> Networking
-- IP Source: Static IP
-- Static IP Adress kann auf 17 bleiben
-- Subnetzmaske kann bleiben
-- Submit
+    - Configuration --> Networking
+    - IP Source: Static IP
+    - Static IP Adress kann auf 17 bleiben
+    - Subnetzmaske kann bleiben
+    - Submit
 7. Uhrzeit einstellen (falls erforderlich)
-- Configuration --> Clock
+    - Configuration --> Clock
 
 
 ### Installation von Python 3.7 auf dem CC100
@@ -74,8 +74,8 @@ Es befindet sich bereits eine Python Installation auf dem Gerät (Version 2.7). 
 
 1. IPK-Datei herunterladen (https://github.com/WAGO/cc100-howtos/blob/main/HowTo_AddPython3/packages/python3_3.7.6_armhf.ipk)
 2. über das WBM Python installieren
-- Configuration --> Software Uploads
-- zuvor heruntergeladene IPK auswählen und installieren
+    - Configuration --> Software Uploads
+    - zuvor heruntergeladene IPK auswählen und installieren
 
 ## 2. Nutzung von Python auf dem CC100
 Um Pythoncode auf dem CC100 schreiben und ausführen zu können, muss der Zugriff auf das Linux Betriebssystem auf dem Gerät
@@ -87,37 +87,44 @@ Auf Windows-Geräten muss zunächst ein SSH-Client installiert werden.
 1. Apps und Features öffnen --> Feature hinzufügen
 2. SSH eingeben --> OpenSSH-Client installieren
 3. Kommandozeile öffnen (cmd)
-```bash
-ssh root@192.168.1.17 
-```
-- password: wago
+
+    ```bash
+    ssh root@192.168.1.17 
+    ```
+    - password: wago
 4. Python Installation prüfen
-```bash
-python3
-```
+
+    ```bash
+    python3
+    ```
 
 ### Visual Studio Code auf dem PC installieren und konfigurieren
 1. https://code.visualstudio.com/download
 2. Python Extension installieren (ms-python.python)
 3. SSH Client Extension installieren, z.B. thangnc.ssh-client
-- add Connection
+    - add Connection
 
 ### Python-Bibliothek zum Ansteuern der Ein- und Ausgänge installieren
 1. Dieses Repository herunterladen
 2. In das Verzeichnes des heruntergeladenen Repositories wechseln und Kommandozeile öffnen
-```bash
-scp -pr ./python_scripts root@192.168.1.17:/home/
-```
+
+    ```bash
+    scp -pr ./python_scripts root@192.168.1.17:/home/
+    ```
 
 Nun können Pythonsscripts im Verzeichnis /home/python_scripts erstellt werden. Es muss lediglich das
 CC100IO Modul im Pythonscript importiert werden.
+
 ```python
 import CC100IO
+
 # Python Code
 ```
 Zum Ausführen der Scripts in das Verzeichnis /home/python_scripts wechseln und das gewünschte Script mit Python 3 ausführen.
+
 ```bash
 cd /home/python_scripts
+
 pyhon3 <script_name.py>
 ```
 
