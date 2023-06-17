@@ -160,6 +160,11 @@ pyhon3 <script_name.py>
 * #### ```tempRead (input)``` :
   *  input: PT input to be switched ("PT1" or "PT2")
   *  Function reads the input and returns the calibrated value in °C as an Integer.
+* #### ```serialReadLine()```:
+  *  Reads incoming message on RS485 Port till eol
+* #### ```serialReadBytes(n)```:
+  *  n: number of bytes to read
+  *  Reads n incoming message on RS485 Port 
 
 ## Beispiele
 Befinden sich im Ordner *python_scripts*

@@ -193,6 +193,9 @@ def tempRead(input):
     return(calibrateTemp(voltage, input))
 
 def serialReadLine():
+    """
+    Reads incoming message on RS485 Port till eol
+    """
     data = ""
     with open(SERIAL_PORT) as ser:
         data = ser.readline()
@@ -202,7 +205,8 @@ def serialReadLine():
 
 def serialReadBytes(n):
     """
-    Reads "n" incoming message on RS485 Port 
+    n: number of bytes to read
+    Reads n incoming message on RS485 Port 
     """
     data = ""
     with open(SERIAL_PORT) as ser:
