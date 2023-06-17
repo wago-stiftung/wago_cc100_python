@@ -191,7 +191,25 @@ def tempRead(input):
 
     # Calibrates the value and returns it
     return(calibrateTemp(voltage, input))
+
+def serialReadLine():
+    data = ""
+    with open(SERIAL_PORT) as ser:
+        data = ser.readline()
     
+    return data
+    
+
+def serialReadBytes(n):
+    """
+    Reads "n" incoming message on RS485 Port 
+    """
+    data = ""
+    with open(SERIAL_PORT) as ser:
+        data = ser.read(n)
+    return data
+
+
 # Output calibration from: https://github.com/WAGO/cc100-howtos/blob/main/HowTo_Access_Onboard_IO/accessIO_CC100.py
 def readCalibriationData():
     """
@@ -293,6 +311,7 @@ IN_VOLTAGE13_RAW = "/sys/bus/iio/devices/iio:device2/in_voltage13_raw"
 IN_VOLTAGE1_RAW = "/sys/bus/iio/devices/iio:device2/in_voltage1_raw"
 CALIB_DATA = "/etc/calib"
 OS_VERSION = "/etc/os-release"
+SERIAL_PORT = "/dev/ttySTM1"
 if osIsDocker():
     #data paths on the Docker-Container
     DOUT_DATA = "/home/ea/dout/DOUT_DATA"
