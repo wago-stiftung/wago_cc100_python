@@ -199,19 +199,30 @@ def serialReadLine():
     data = ""
     with open(SERIAL_PORT) as ser:
         data = ser.readline()
-    
     return data
     
 
 def serialReadBytes(n):
     """
     n: number of bytes to read
-    Reads n incoming message on RS485 Port 
+    Reads n incoming bytes on RS485 Port 
     """
     data = ""
-    with open(SERIAL_PORT) as ser:
+    with open(SERIAL_PORT, "r") as ser:
         data = ser.read(n)
     return data
+
+
+def serialWrite(message):
+    """
+    message: String to write
+    Write message to RS485 serial interface
+    returns number of written bytes  
+    """
+    written = -1
+    with open(SERIAL_PORT, "w") as ser:
+        written = ser.write(message)
+    return written
 
 
 # Output calibration from: https://github.com/WAGO/cc100-howtos/blob/main/HowTo_Access_Onboard_IO/accessIO_CC100.py

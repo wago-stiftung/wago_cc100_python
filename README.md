@@ -165,6 +165,10 @@ pyhon3 <script_name.py>
 * #### ```serialReadBytes(n)```:
   *  n: number of bytes to read
   *  Reads n incoming message on RS485 Port 
+* #### ```serialWrite(message)```:
+  *  message: String to write
+  *  Write message to RS485 serial interface
+  *  returns number of written bytes  
 
 ## Beispiele
 Befinden sich im Ordner *python_scripts*
